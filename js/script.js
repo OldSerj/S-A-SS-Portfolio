@@ -32,23 +32,6 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => observer.observe(el));
 
-const track = document.getElementById('sliderTrack');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-const scrollAmount = () => {
-    const slide = track.querySelector('.slide');
-    return slide ? slide.offsetWidth + 24 : 300;
-};
-
-prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-});
-
-nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-});
-
 const langBtns = document.querySelectorAll('.lang-btn');
 const translatableElements = document.querySelectorAll('[data-en]');
 
@@ -56,10 +39,10 @@ function setLanguage(lang) {
     translatableElements.forEach(el => {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
-
+    
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
-
+    
     langBtns.forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');
