@@ -39,10 +39,10 @@ function setLanguage(lang) {
     translatableElements.forEach(el => {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
-    
+
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
-    
+
     langBtns.forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');
@@ -60,3 +60,18 @@ langBtns.forEach(btn => {
 
 const savedLang = localStorage.getItem('lang') || 'ro';
 setLanguage(savedLang);
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
