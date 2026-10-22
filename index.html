@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&A Smart Solution | Web & AI Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">S&A Smart Solution</div>
+        <div class="nav-controls">
+            <div class="nav-links">
+                <a href="#work" data-en="Work" data-ro="Portofoliu">Portofoliu</a>
+                <a href="#services" data-en="Services" data-ro="Servicii">Servicii</a>
+                <a href="#about" data-en="About" data-ro="Despre Noi">Despre Noi</a>
+                <a href="#contact" data-en="Contact" data-ro="Contact">Contact</a>
+            </div>
+
+            <div class="lang-switch">
+                <span class="lang-btn active" data-lang="ro">RO</span>
+                <span class="lang-sep">/</span>
+                <span class="lang-btn" data-lang="en">EN</span>
+            </div>
+
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </div>
+            </label>
+        </div>
+    </nav>
+
+    <header class="hero reveal">
+        <div class="discount-badge" data-en="🔥 Early client offer: up to 20% off"
+            data-ro="🔥 Ofertă pentru primii clienți: -20%">🔥 Ofertă pentru primii clienți: -20%</div>
+        <h1 class="hero-title" data-en="We build your digital presence." data-ro="Construim prezența ta digitală.">
+            Construim prezența ta digitală.</h1>
+        <p class="hero-subtitle"
+            data-en="We are a young web development and AI solutions agency. We create WordPress websites, Shopify stores, and web applications, supported by our entire team."
+            data-ro="Suntem o agenție tânără de dezvoltare web și soluții AI. Realizăm site-uri WordPress, magazine Shopify și aplicații web, susținute de întreaga noastră echipă.">
+            Suntem o agenție tânără de dezvoltare web și soluții AI. Realizăm site-uri WordPress, magazine Shopify și
+            aplicații web, susținute de întreaga noastră echipă.</p>
+    </header>
+
+    <section id="work" class="work-section reveal">
+        <h2 class="section-title" data-en="Selected Work" data-ro="Portofoliu">Portofoliu</h2>
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide">
+                    <div class="slide-image"></div>
+                    <div class="slide-info">
+                        <h3 data-en="Project Alpha" data-ro="Proiect Alpha">Proiect Alpha</h3>
+                        <p data-en="E-commerce & Brand Identity" data-ro="E-commerce și Identitate de Brand">E-commerce
+                            și Identitate de Brand</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-image"></div>
+                    <div class="slide-info">
+                        <h3 data-en="Project Beta" data-ro="Proiect Beta">Proiect Beta</h3>
+                        <p data-en="Corporate Website Redesign" data-ro="Redesign Site Corporate">Redesign Site
+                            Corporate</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-image"></div>
+                    <div class="slide-info">
+                        <h3 data-en="Project Gamma" data-ro="Proiect Gamma">Proiect Gamma</h3>
+                        <p data-en="Custom Web Application" data-ro="Aplicație Web Custom">Aplicație Web Custom</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-image"></div>
+                    <div class="slide-info">
+                        <h3 data-en="Project Delta" data-ro="Proiect Delta">Proiect Delta</h3>
+                        <p data-en="AI Integration & SEO" data-ro="Integrare AI și SEO">Integrare AI și SEO</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn" aria-label="Previous slide">←</button>
+                <button class="slider-btn" id="nextBtn" aria-label="Next slide">→</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <h2 class="section-title reveal" data-en="Pricing & Services" data-ro="Listă de Prețuri & Servicii">Listă de
+            Prețuri & Servicii</h2>
+        <div class="grid">
+            <div class="service-card reveal">
+                <h3 data-en="Simple Presentation Website" data-ro="Site de Prezentare Simplu">Site de Prezentare Simplu
+                </h3>
+                <p class="desc"
+                    data-en="One-Page / Landing page structured, mobile-friendly, contact form, and direct WhatsApp/Call button."
+                    data-ro="One-Page / Landing page structurat, mobil-friendly, formular de contact și buton direct WhatsApp/Apel.">
+                    One-Page / Landing page structurat, mobil-friendly, formular de contact și buton direct
+                    WhatsApp/Apel.</p>
+                <div class="price" data-en="2,500 RON <span>~ €500</span>" data-ro="2.500 LEI <span>~ 500 €</span>">
+                    2.500 LEI <span>~ 500 €</span></div>
+            </div>
+            <div class="service-card reveal">
+                <h3 data-en="Standard Presentation Website" data-ro="Site de Prezentare Standard">Site de Prezentare
+                    Standard</h3>
+                <p class="desc"
+                    data-en="5–8 pages (Home, About us, Services, Portfolio, Gallery, Contact, Blog). Includes basic optimization."
+                    data-ro="5–8 pagini (Acasă, Despre noi, Servicii, Portofoliu, Galerie, Contact, Blog). Include optimizare de bază.">
+                    5–8 pagini (Acasă, Despre noi, Servicii, Portofoliu, Galerie, Contact, Blog). Include optimizare de
+                    bază.</p>
+                <div class="price" data-en="4,000 RON <span>~ €800</span>" data-ro="4.000 LEI <span>~ 800 €</span>">
+                    4.000 LEI <span>~ 800 €</span></div>
+            </div>
+            <div class="service-card reveal">
+                <h3 data-en="Reconfiguration / Redesign" data-ro="Reconfigurare / Redesign">Reconfigurare / Redesign
+                </h3>
+                <p class="desc" data-en="For old sites: speed optimization, theme/design change, and mobile adaptation."
+                    data-ro="Pentru site-uri vechi: optimizare viteză, schimbare temă/design și adaptare pentru dispozitive mobile.">
+                    Pentru site-uri vechi: optimizare viteză, schimbare temă/design și adaptare pentru dispozitive
+                    mobile.</p>
+                <div class="price" data-en="2,000 RON <span>~ €400</span>" data-ro="2.000 LEI <span>~ 400 €</span>">
+                    2.000 LEI <span>~ 400 €</span></div>
+            </div>
+            <div class="service-card reveal">
+                <h3 data-en="Google Maps Optimization" data-ro="Optimizare Google Maps">Optimizare Google Maps</h3>
+                <p class="desc"
+                    data-en="Create/claim Google Business account, set up categories, photos, posts, and local keywords."
+                    data-ro="Creare/revendicare cont Google Business, configurare categorii, poze, postări și cuvinte cheie locale.">
+                    Creare/revendicare cont Google Business, configurare categorii, poze, postări și cuvinte cheie
+                    locale.</p>
+                <div class="price" data-en="1,000 RON <span>~ €200</span>" data-ro="1.000 LEI <span>~ 200 €</span>">
+                    1.000 LEI <span>~ 200 €</span></div>
+            </div>
+            <div class="service-card reveal">
+                <h3 data-en="Audit & On-Page SEO" data-ro="Audit & SEO On-Page">Audit & SEO On-Page</h3>
+                <p class="desc"
+                    data-en="Keyword research, title optimization, texts, images, loading speed, and Google indexing."
+                    data-ro="Cercetare cuvinte cheie, optimizare titluri, texte, imagini, viteză de încărcare și indexare Google.">
+                    Cercetare cuvinte cheie, optimizare titluri, texte, imagini, viteză de încărcare și indexare Google.
+                </p>
+                <div class="price" data-en="2,000 RON <span>~ €400</span>" data-ro="2.000 LEI <span>~ 400 €</span>">
+                    2.000 LEI <span>~ 400 €</span></div>
+            </div>
+            <div class="service-card reveal">
+                <h3 data-en="Google Ads Campaign Setup" data-ro="Setare Campanie Google Ads">Setare Campanie Google Ads
+                </h3>
+                <p class="desc"
+                    data-en="Search term research, ad copywriting, call extension setup, and budget configuration."
+                    data-ro="Cercetare cuvinte de căutare, scriere reclame text, setare extensii de apel și configurare buget.">
+                    Cercetare cuvinte de căutare, scriere reclame text, setare extensii de apel și configurare buget.
+                </p>
+                <div class="price" data-en="1,500 RON <span>~ €300</span>" data-ro="1.500 LEI <span>~ 300 €</span>">
+                    1.500 LEI <span>~ 300 €</span></div>
+            </div>
+        </div>
+        <p class="disclaimer reveal"
+            data-en="* Prices are indicative; the final offer is established after project analysis."
+            data-ro="* Prețurile sunt orientative; oferta finală se stabilește după analiza proiectului.">* Prețurile
+            sunt orientative; oferta finală se stabilește după analiza proiectului.</p>
+    </section>
+
+    <section id="about" class="about-section reveal">
+        <div class="about-content">
+            <h2 class="section-title" data-en="About Us" data-ro="Despre Noi">Despre Noi</h2>
+            <p data-en="S&A Smart Solution is a young web development agency made up of four people: two developers specialized in Artificial Intelligence, a project coordinator, and a marketing and sales specialist. Every project is supported by the entire team, not just one person. We are building our portfolio, so our prices are flexible and accessible."
+                data-ro="S&A Smart Solution este o agenție tânără de dezvoltare web, formată din patru oameni: doi dezvoltatori specializați în Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană. Ne construim portofoliul, așa că prețurile noastre sunt flexibile și accesibile.">
+                S&A Smart Solution este o agenție tânără de dezvoltare web, formată din patru oameni: doi dezvoltatori
+                specializați în Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și
+                vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană. Ne construim
+                portofoliul, așa că prețurile noastre sunt flexibile și accesibile.</p>
+        </div>
+    </section>
+
+    <section class="terms-section reveal">
+        <div class="terms-box">
+            <h3 data-en="Collaboration Terms" data-ro="Condiții de Colaborare">Condiții de Colaborare</h3>
+            <ul>
+                <li data-en="<strong>Special offer:</strong> Up to 20% discount for early clients."
+                    data-ro="<strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.">
+                    <strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.</li>
+                <li data-en="<strong>Payment:</strong> 30–50% advance at the start of the project, the rest upon delivery."
+                    data-ro="<strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.">
+                    <strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.</li>
+                <li data-en="<strong>Custom offer:</strong> Send us your project details and we will get back to you with a final price."
+                    data-ro="<strong>Ofertă personalizată:</strong> Trimiteți-ne detaliile proiectului și revenim cu un preț final.">
+                    <strong>Ofertă personalizată:</strong> Trimiteți-ne detaliile proiectului și revenim cu un preț
+                    final.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2 data-en="We are just a message away." data-ro="Suntem la un mesaj distanță.">Suntem la un mesaj distanță.
+        </h2>
+        <p class="contact-sub" data-en="Choose your preferred method to discuss your project."
+            data-ro="Alege metoda preferată pentru a discuta despre proiectul tău.">Alege metoda preferată pentru a
+            discuta despre proiectul tău.</p>
+        <div class="contact-buttons">
+            <a href="tel:0745171506" class="btn btn-primary" data-en="📞 Call now: 0745 171 506"
+                data-ro="📞 Sună acum: 0745 171 506">📞 Sună acum: 0745 171 506</a>
+            <a href="https://wa.me/40745171506" target="_blank" class="btn btn-secondary"
+                data-en="💬 Message on WhatsApp" data-ro="💬 Scrie pe WhatsApp">💬 Scrie pe WhatsApp</a>
+        </div>
+        <p class="email-text"
+            data-en="Or send us an email at: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>"
+            data-ro="Sau trimite-ne un email la: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>">
+            Sau trimite-ne un email la: <br> <a
+                href="mailto:office.sasmartsolution@gmail.com">office.sasmartsolution@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p data-en="&copy; 2026 S&A Smart Solution. All rights reserved."
+            data-ro="&copy; 2026 S&A Smart Solution. Toate drepturile rezervate.">&copy; 2026 S&A Smart Solution. Toate
+            drepturile rezervate.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
