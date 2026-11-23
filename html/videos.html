@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos | S&A Smart Solution</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .video-card {
+            cursor: pointer;
+        }
+
+        .video-card .video-frame {
+            max-height: 210px;
+            aspect-ratio: 16 / 10;
+        }
+
+        .video-card .project-content {
+            padding: 1.35rem 1.5rem;
+        }
+
+        .video-card .project-content h3 {
+            font-size: 1.12rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .video-card .project-content p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .video-card .video-play-btn {
+            width: 44px;
+            height: 44px;
+            font-size: 0.95rem;
+        }
+
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 17, 34, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            z-index: 2000;
+        }
+
+        .video-overlay.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .video-overlay-box {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--bg-elevated, #1a3157);
+            border: 1px solid var(--border, #293853);
+            border-radius: 16px;
+            padding: 0.75rem;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+            transform: scale(0.96);
+            transition: transform 0.25s ease;
+        }
+
+        .video-overlay.open .video-overlay-box {
+            transform: scale(1);
+        }
+
+        .video-overlay-close {
+            position: absolute;
+            top: -16px;
+            right: -12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background-color: #112444;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .video-overlay-close:hover {
+            background-color: var(--primary, #406fe5);
+            transform: scale(1.06);
+        }
+
+        .video-overlay-player {
+            width: 100%;
+            max-height: 76dvh;
+            border-radius: 10px;
+            background-color: #000000;
+            display: block;
+        }
+
+        .video-overlay-caption {
+            padding: 0.75rem 0.35rem 0.2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text, #ffffff);
+        }
+
+        @media (max-width: 900px) {
+            .video-card .video-frame {
+                max-height: 180px;
+            }
+
+            .video-card .project-content {
+                padding: 1.15rem 1.25rem;
+            }
+
+            .video-overlay {
+                padding: 0.9rem;
+            }
+
+            .video-overlay-box {
+                padding: 0.55rem;
+            }
+
+            .video-overlay-close {
+                top: -14px;
+                right: -6px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .video-overlay-player {
+                max-height: 70dvh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="homepage.html" class="logo">S&A Smart Solution</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html" data-en="Home" data-ro="Acasă">Acasă</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="dropdown-toggle" id="dropdownToggle" aria-expanded="false" data-en="Categories ▾"
+                        data-ro="Categorii ▾">Categorii ▾</button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="websites.html" data-en="Websites" data-ro="Site-uri">Site-uri</a>
+                        <a href="logos.html" data-en="Logos" data-ro="Logo-uri">Logo-uri</a>
+                        <a href="videos.html" data-en="Videos" data-ro="Video-uri">Video-uri</a>
+                    </div>
+                </div>
+                <a href="#workflow-videos" data-en="How We Work" data-ro="Cum Lucrăm">Cum Lucrăm</a>
+                <a href="#contact" data-en="Contact" data-ro="Contact">Contact</a>
+                <div class="lang-switch">
+                    <span class="lang-btn active" data-lang="ro">RO</span>
+                    <span class="lang-sep">/</span>
+                    <span class="lang-btn" data-lang="en">EN</span>
+                </div>
+            </div>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </div>
+            </label>
+            <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header reveal">
+        <div class="product-symbol">👤</div>
+        <h1 class="page-title" data-en="Video Production & Short Clips" data-ro="Producție Video & Clipuri">Producție Video & Clipuri</h1>
+        <p class="page-subtitle"
+            data-en="Authentic, human-focused video content crafted to introduce your team, services, and offers clearly."
+            data-ro="Conținut video autentic, centrat pe oameni, realizat pentru a prezenta clar echipa, serviciile și ofertele tale.">
+            Conținut video autentic, centrat pe oameni, realizat pentru a prezenta clar echipa, serviciile și ofertele tale.</p>
+    </header>
+
+    <section class="work-section">
+        <h2 class="section-title reveal" data-en="Video Portfolio" data-ro="Portofoliu Video">Portofoliu Video</h2>
+        <div class="grid">
+            <article class="project-card video-card reveal" data-video-item>
+                <div class="video-frame">
+                    <video class="portfolio-video" data-src="../media/cabinet-stomatologic.mp4" preload="metadata"
+                        playsinline muted loop></video>
+                    <button type="button" class="video-play-btn" aria-label="Play video">▶</button>
+                    <span class="video-status-badge" data-en="Preview" data-ro="Previzualizare">Previzualizare</span>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag" data-en="Medical" data-ro="Medical">Medical</span>
+                    <h3 data-en="Dental Clinic Presentation" data-ro="Cabinet Stomatologic">Cabinet Stomatologic</h3>
+                    <p data-en="Clean, trust-building clinic video presentation highlighting patient care and modern treatments."
+                        data-ro="Clip de prezentare pentru cabinet stomatologic, axat pe încredere, atenție pentru pacient și tratamente moderne.">
+                        Clip de prezentare pentru cabinet stomatologic, axat pe încredere, atenție pentru pacient și tratamente moderne.</p>
+                </div>
+            </article>
+
+            <article class="project-card video-card reveal" data-video-item>
+                <div class="video-frame">
+                    <video class="portfolio-video" data-src="../media/service-auto-1.mp4" preload="metadata"
+                        playsinline muted loop></video>
+                    <button type="button" class="video-play-btn" aria-label="Play video">▶</button>
+                    <span class="video-status-badge" data-en="Preview" data-ro="Previzualizare">Previzualizare</span>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag" data-en="Automotive" data-ro="Auto">Auto</span>
+                    <h3 data-en="Auto Service — Promo I" data-ro="Service Auto — Promo I">Service Auto — Promo I</h3>
+                    <p data-en="Dynamic workshop showcase capturing real diagnostics, maintenance work, and team expertise."
+                        data-ro="Clip dinamic din service auto care surprinde diagnoza reală, lucrările de mentenanță și profesionalismul echipei.">
+                        Clip dinamic din service auto care surprinde diagnoza reală, lucrările de mentenanță și profesionalismul echipei.</p>
+                </div>
+            </article>
+
+            <article class="project-card video-card reveal" data-video-item>
+                <div class="video-frame">
+                    <video class="portfolio-video" data-src="../media/service-auto-2.mp4" preload="metadata"
+                        playsinline muted loop></video>
+                    <button type="button" class="video-play-btn" aria-label="Play video">▶</button>
+                    <span class="video-status-badge" data-en="Preview" data-ro="Previzualizare">Previzualizare</span>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag" data-en="Automotive" data-ro="Auto">Auto</span>
+                    <h3 data-en="Auto Service — Promo II" data-ro="Service Auto — Promo II">Service Auto — Promo II</h3>
+                    <p data-en="Short-form promotional cut focused on fast turnaround, clear communication, and direct bookings."
+                        data-ro="Material promoțional scurt axat pe rapiditate, comunicare transparentă și programări directe.">
+                        Material promoțional scurt axat pe rapiditate, comunicare transparentă și programări directe.</p>
+                </div>
+            </article>
+
+            <article class="project-card video-card reveal" data-video-item>
+                <div class="video-frame">
+                    <video class="portfolio-video" data-src="../media/service-gsm.mp4" preload="metadata"
+                        playsinline muted loop></video>
+                    <button type="button" class="video-play-btn" aria-label="Play video">▶</button>
+                    <span class="video-status-badge" data-en="Preview" data-ro="Previzualizare">Previzualizare</span>
+                </div>
+                <div class="project-content">
+                    <span class="project-tag" data-en="GSM & Tech Repair" data-ro="Service GSM">Service GSM</span>
+                    <h3 data-en="GSM Repair Service" data-ro="Service GSM">Service GSM</h3>
+                    <p data-en="Close-up tech repair reel demonstrating precision diagnostics and rapid smartphone servicing."
+                        data-ro="Clip scurt din service GSM care evidențiază precizia intervențiilor și reparațiile rapide.">
+                        Clip scurt din service GSM care evidențiază precizia intervențiilor și reparațiile rapide.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="workflow-videos" class="workflow-section">
+        <h2 class="section-title reveal" data-en="How We Produce Videos" data-ro="Cum Lucrăm la Video-uri">Cum Lucrăm la Video-uri</h2>
+        <div class="workflow-card reveal">
+            <div class="workflow-header">
+                <span class="workflow-badge">👤</span>
+                <h3 data-en="Simple, Guided Video Workflow" data-ro="Flux Video Clar și Ghidat">Flux Video Clar și Ghidat</h3>
+            </div>
+            <ul class="workflow-steps">
+                <li data-en="<strong>Script & Talking Points:</strong> We outline what to say so delivery feels natural and direct."
+                    data-ro="<strong>Idei & Repere:</strong> Stabilim reperele de mesaj astfel încât totul să sune natural și la obiect.">
+                    <strong>Idei & Repere:</strong> Stabilim reperele de mesaj astfel încât totul să sune natural și la obiect.</li>
+                <li data-en="<strong>Recording:</strong> We shoot clean footage with attention to framing, lighting, and audio."
+                    data-ro="<strong>Înregistrare:</strong> Filmăm cadre curate, atenți la încadrare, lumină și claritatea vocii.">
+                    <strong>Înregistrare:</strong> Filmăm cadre curate, atenți la încadrare, lumină și claritatea vocii.</li>
+                <li data-en="<strong>Editing & Delivery:</strong> We trim pauses, add clean captions, and deliver ready-to-post files."
+                    data-ro="<strong>Montaj & Livrare:</strong> Eliminăm timpii morți, adăugăm subtitrări clare și livrăm fișierele gata de postat.">
+                    <strong>Montaj & Livrare:</strong> Eliminăm timpii morți, adăugăm subtitrări clare și livrăm fișierele gata de postat.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2 data-en="Want video content that connects?" data-ro="Vrei clipuri video care apropie clienții?">Vrei clipuri video care apropie clienții?</h2>
+        <p class="contact-sub" data-en="Send us a message and we will plan your next videos together."
+            data-ro="Trimite-ne un mesaj și planificăm împreună următoarele materiale video.">Trimite-ne un mesaj și planificăm împreună următoarele materiale video.</p>
+        <div class="contact-buttons">
+            <a href="tel:0745171506" class="btn btn-primary" data-en="📞 Call now: 0745 171 506"
+                data-ro="📞 Sună acum: 0745 171 506">📞 Sună acum: 0745 171 506</a>
+            <a href="https://wa.me/40745171506" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
+                data-en="💬 Message on WhatsApp" data-ro="💬 Scrie pe WhatsApp">💬 Scrie pe WhatsApp</a>
+        </div>
+        <p class="email-text"
+            data-en="Or send us an email at: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>"
+            data-ro="Sau trimite-ne un email la: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>">
+            Sau trimite-ne un email la: <br> <a href="mailto:office.sasmartsolution@gmail.com">office.sasmartsolution@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p data-en="&copy; 2026 S&A Smart Solution. All rights reserved."
+            data-ro="&copy; 2026 S&A Smart Solution. Toate drepturile rezervate.">&copy; 2026 S&A Smart Solution. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/lang.js"></script>
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/reveal.js"></script>
+    <script src="../js/video-overlay.js"></script>
+    <script src="../js/video-queue.js"></script>
+</body>
+
+</html>

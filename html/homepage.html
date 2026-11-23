@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S&A Smart Solution | Web & AI Agency</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="homepage.html" class="logo">S&A Smart Solution</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html" data-en="Home" data-ro="Acasă">Acasă</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="dropdown-toggle" id="dropdownToggle" aria-expanded="false"
+                        data-en="Categories ▾" data-ro="Categorii ▾">Categorii ▾</button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="websites.html" data-en="Websites" data-ro="Site-uri">Site-uri</a>
+                        <a href="logos.html" data-en="Logos" data-ro="Logo-uri">Logo-uri</a>
+                        <a href="videos.html" data-en="Videos" data-ro="Video-uri">Video-uri</a>
+                    </div>
+                </div>
+                <a href="#products" data-en="Products" data-ro="Produse">Produse</a>
+                <a href="#about" data-en="About" data-ro="Despre Noi">Despre Noi</a>
+                <a href="#contact" data-en="Contact" data-ro="Contact">Contact</a>
+                <div class="lang-switch">
+                    <span class="lang-btn active" data-lang="ro">RO</span>
+                    <span class="lang-sep">/</span>
+                    <span class="lang-btn" data-lang="en">EN</span>
+                </div>
+            </div>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </div>
+            </label>
+            <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero reveal">
+        <div class="discount-badge" data-en="🔥 Early client offer: up to 20% off"
+            data-ro="🔥 Ofertă pentru primii clienți: -20%">🔥 Ofertă pentru primii clienți: -20%</div>
+        <h1 class="hero-title" data-en="We build your digital presence." data-ro="Construim prezența ta digitală.">
+            Construim prezența ta digitală.</h1>
+        <p class="hero-subtitle"
+            data-en="We are a young web development agency. We create websites, logos, and videos to boost your company's engagement."
+            data-ro="Suntem o agenție tânără de dezvoltare web. Realizăm site-uri, logo-uri și video-uri, susținute de întreaga noastră echipă.">
+            Suntem o agenție tânără de dezvoltare web. Realizăm site-uri, logo-uri și video-uri, susținute de întreaga
+            noastră echipă.</p>
+    </header>
+
+    <section id="products" class="products-section">
+        <h2 class="section-title reveal" data-en="Products" data-ro="Produse">Produse</h2>
+        <div class="grid">
+            <a href="websites.html" class="product-card reveal">
+                <div>
+                    <div class="product-symbol">&lt;/&gt;</div>
+                    <h3 data-en="Websites" data-ro="Site-uri">Site-uri</h3>
+                    <p data-en="Modern presentation websites, custom web apps, and mobile-first layouts built for performance and conversions."
+                        data-ro="Site-uri de prezentare moderne, aplicații web și structuri mobile-first construite pentru performanță și conversii.">
+                        Site-uri de prezentare moderne, aplicații web și structuri mobile-first construite pentru
+                        performanță și conversii.</p>
+                </div>
+                <span class="product-cta" data-en="Explore Websites →" data-ro="Vezi Site-uri →">Vezi Site-uri →</span>
+            </a>
+
+            <a href="videos.html" class="product-card reveal">
+                <div>
+                    <div class="product-symbol">👤</div>
+                    <h3 data-en="Videos" data-ro="Video-uri">Video-uri</h3>
+                    <p data-en="Short promotional clips, social media reels, and human-centered brand stories tailored for audience retention."
+                        data-ro="Clipuri promoționale scurte, materiale pentru social media și povești vizuale centrate pe oameni.">
+                        Clipuri promoționale scurte, materiale pentru social media și povești vizuale centrate pe
+                        oameni.</p>
+                </div>
+                <span class="product-cta" data-en="Explore Videos →" data-ro="Vezi Video-uri →">Vezi Video-uri →</span>
+            </a>
+
+            <a href="logos.html" class="product-card reveal">
+                <div>
+                    <div class="product-symbol">Aa</div>
+                    <h3 data-en="Logos" data-ro="Logo-uri">Logo-uri</h3>
+                    <p data-en="Distinctive brand marks, typography systems, and versatile visual identities ready for web and print."
+                        data-ro="Semne de brand distinctive, sisteme tipografice și identități vizuale pregătite pentru web și print.">
+                        Semne de brand distinctive, sisteme tipografice și identități vizuale pregătite pentru web și
+                        print.</p>
+                </div>
+                <span class="product-cta" data-en="Explore Logos →" data-ro="Vezi Logo-uri →">Vezi Logo-uri →</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section reveal">
+        <div class="about-content">
+            <h2 class="section-title" data-en="About Us" data-ro="Despre Noi">Despre Noi</h2>
+            <p data-en="S&A Smart Solution is a young digital agency made up of four people: two developers specialized in Computer Science Artificial Intelligence, a project coordinator, and a marketing and sales specialist. Every project is supported by the entire team, not just one person."
+                data-ro="S&A Smart Solution este o agenție tânără, formată din patru oameni: doi dezvoltatori specializați în Informatică Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană.">
+                S&A Smart Solution este o agenție tânără, formată din patru oameni: doi dezvoltatori specializați în
+                Informatică Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și
+                vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană.</p>
+        </div>
+    </section>
+
+    <section class="terms-section reveal">
+        <div class="terms-box">
+            <h3 data-en="Collaboration Terms" data-ro="Condiții de Colaborare">Condiții de Colaborare</h3>
+            <ul>
+                <li data-en="<strong>Special offer:</strong> Up to 20% discount for early clients."
+                    data-ro="<strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.">
+                    <strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.
+                </li>
+                <li data-en="<strong>Payment:</strong> 30–50% advance at the start of the project, the rest upon delivery."
+                    data-ro="<strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.">
+                    <strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.
+                </li>
+                <li data-en="<strong>Custom offer:</strong> Send us your project details and we will tailor the scope to your needs."
+                    data-ro="<strong>Ofertă personalizată:</strong> Trimite-ne detaliile proiectului și adaptăm soluția la nevoile tale.">
+                    <strong>Ofertă personalizată:</strong> Trimite-ne detaliile proiectului și adaptăm soluția la
+                    nevoile tale.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2 data-en="We are just a message away." data-ro="Suntem la un mesaj distanță.">Suntem la un mesaj distanță.
+        </h2>
+        <p class="contact-sub" data-en="Choose your preferred method to discuss your project."
+            data-ro="Alege metoda preferată pentru a discuta despre proiectul tău.">Alege metoda preferată pentru a
+            discuta despre proiectul tău.</p>
+        <div class="contact-buttons">
+            <a href="tel:0745171506" class="btn btn-primary" data-en="📞 Call now: 0745 171 506"
+                data-ro="📞 Sună acum: 0745 171 506">📞 Sună acum: 0745 171 506</a>
+            <a href="https://wa.me/40745171506" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
+                data-en="💬 Message on WhatsApp" data-ro="💬 Scrie pe WhatsApp">💬 Scrie pe WhatsApp</a>
+        </div>
+        <p class="email-text"
+            data-en="Or send us an email at: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>"
+            data-ro="Sau trimite-ne un email la: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>">
+            Sau trimite-ne un email la: <br> <a
+                href="mailto:office.sasmartsolution@gmail.com">office.sasmartsolution@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p data-en="&copy; 2026 S&A Smart Solution. All rights reserved."
+            data-ro="&copy; 2026 S&A Smart Solution. Toate drepturile rezervate.">&copy; 2026 S&A Smart Solution. Toate
+            drepturile rezervate.</p>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/lang.js"></script>
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/reveal.js"></script>
+</body>
+
+</html>

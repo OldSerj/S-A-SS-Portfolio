@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logos | S&A Smart Solution</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .coming-soon-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5% 4rem 5%;
+        }
+
+        .coming-soon-card {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background-color: rgba(64, 111, 229, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .coming-soon-card h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+        }
+
+        .coming-soon-card p {
+            max-width: 560px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        .coming-soon-actions {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="homepage.html" class="logo">S&A Smart Solution</a>
+        <div class="nav-controls">
+            <div class="nav-links" id="navLinks">
+                <a href="homepage.html" data-en="Home" data-ro="Acasă">Acasă</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="dropdown-toggle" id="dropdownToggle" aria-expanded="false"
+                        data-en="Categories ▾" data-ro="Categorii ▾">Categorii ▾</button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="websites.html" data-en="Websites" data-ro="Site-uri">Site-uri</a>
+                        <a href="logos.html" data-en="Logos" data-ro="Logo-uri">Logo-uri</a>
+                        <a href="videos.html" data-en="Videos" data-ro="Video-uri">Video-uri</a>
+                    </div>
+                </div>
+                <a href="#workflow-logos" data-en="How We Work" data-ro="Cum Lucrăm">Cum Lucrăm</a>
+                <a href="#contact" data-en="Contact" data-ro="Contact">Contact</a>
+                <div class="lang-switch">
+                    <span class="lang-btn active" data-lang="ro">RO</span>
+                    <span class="lang-sep">/</span>
+                    <span class="lang-btn" data-lang="en">EN</span>
+                </div>
+            </div>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <span class="icon sun">☀️</span>
+                    <span class="icon moon">🌙</span>
+                </div>
+            </label>
+            <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header reveal">
+        <div class="product-symbol">Aa</div>
+        <h1 class="page-title" data-en="Logo Design & Brand Marks" data-ro="Logo Design & Identitate Vizuală">Logo
+            Design & Identitate Vizuală</h1>
+        <p class="page-subtitle"
+            data-en="Memorable symbols and clean wordmarks designed to stay sharp across avatars, headers, packaging, and print."
+            data-ro="Simboluri memorabile și identități tipografice clare, gândite să rămână lizibile pe avatar, site, ambalaje și print.">
+            Simboluri memorabile și identități tipografice clare, gândite să rămână lizibile pe avatar, site, ambalaje
+            și print.</p>
+    </header>
+
+    <section class="coming-soon-section">
+        <div class="coming-soon-card reveal">
+            <span class="coming-soon-badge" data-en="In Preparation" data-ro="În Pregătire">În Pregătire</span>
+            <h2 data-en="Logo Portfolio Coming Soon" data-ro="Portofoliul de Logo-uri Apare în Curând">Portofoliul de
+                Logo-uri Apare în Curând</h2>
+            <p data-en="We are currently curating and uploading our latest brand identity and logo design projects. In the meantime, you can explore our live websites or reach out directly for a custom logo."
+                data-ro="Pregătim și încărcăm în acest moment cele mai recente proiecte de identitate vizuală și logo design. Între timp, poți explora site-urile realizate sau ne poți contacta direct pentru un logo personalizat.">
+                Pregătim și încărcăm în acest moment cele mai recente proiecte de identitate vizuală și logo design.
+                Între timp, poți explora site-urile realizate sau ne poți contacta direct pentru un logo personalizat.
+            </p>
+            <div class="coming-soon-actions">
+                <a href="#contact" class="btn btn-primary" data-en="Request a Logo" data-ro="Cere un Logo">Cere un
+                    Logo</a>
+                <a href="websites.html" class="btn btn-secondary" data-en="Explore Websites →"
+                    data-ro="Vezi Site-uri →">Vezi Site-uri →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow-logos" class="workflow-section">
+        <h2 class="section-title reveal" data-en="How We Design Logos" data-ro="Cum Lucrăm la Logo-uri">Cum Lucrăm la
+            Logo-uri</h2>
+        <div class="workflow-card reveal">
+            <div class="workflow-header">
+                <span class="workflow-badge">Aa</span>
+                <h3 data-en="Structured Visual Identity Process" data-ro="Proces Clar de Identitate Vizuală">Proces Clar
+                    de Identitate Vizuală</h3>
+            </div>
+            <ul class="workflow-steps">
+                <li data-en="<strong>Brief & Mood:</strong> We gather your brand story, references, and visual personality."
+                    data-ro="<strong>Brief & Direcție:</strong> Stabilim povestea brandului, referințele și personalitatea vizuală.">
+                    <strong>Brief & Direcție:</strong> Stabilim povestea brandului, referințele și personalitatea
+                    vizuală.
+                </li>
+                <li data-en="<strong>Explorations:</strong> We create distinct logo concepts combining symbol and typography."
+                    data-ro="<strong>Propuneri:</strong> Realizăm concepte distincte care îmbină simbolul și tipografia.">
+                    <strong>Propuneri:</strong> Realizăm concepte distincte care îmbină simbolul și tipografia.
+                </li>
+                <li data-en="<strong>Finalization:</strong> We refine proportions and prepare clean files for everyday use."
+                    data-ro="<strong>Finalizare:</strong> Ajustăm proporțiile și pregătim fișierele clare pentru utilizare zilnică.">
+                    <strong>Finalizare:</strong> Ajustăm proporțiile și pregătim fișierele clare pentru utilizare
+                    zilnică.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section reveal">
+        <h2 data-en="Ready to shape your brand mark?" data-ro="Pregătit pentru un logo nou?">Pregătit pentru un logo
+            nou?</h2>
+        <p class="contact-sub" data-en="Tell us about your business and let's start."
+            data-ro="Spune-ne câteva detalii despre afacerea ta și începem.">Spune-ne câteva detalii despre afacerea ta
+            și începem.</p>
+        <div class="contact-buttons">
+            <a href="tel:0745171506" class="btn btn-primary" data-en="📞 Call now: 0745 171 506"
+                data-ro="📞 Sună acum: 0745 171 506">📞 Sună acum: 0745 171 506</a>
+            <a href="https://wa.me/40745171506" target="_blank" rel="noopener noreferrer" class="btn btn-secondary"
+                data-en="💬 Message on WhatsApp" data-ro="💬 Scrie pe WhatsApp">💬 Scrie pe WhatsApp</a>
+        </div>
+        <p class="email-text"
+            data-en="Or send us an email at: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>"
+            data-ro="Sau trimite-ne un email la: <br> <a href='mailto:office.sasmartsolution@gmail.com'>office.sasmartsolution@gmail.com</a>">
+            Sau trimite-ne un email la: <br> <a
+                href="mailto:office.sasmartsolution@gmail.com">office.sasmartsolution@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p data-en="&copy; 2026 S&A Smart Solution. All rights reserved."
+            data-ro="&copy; 2026 S&A Smart Solution. Toate drepturile rezervate.">&copy; 2026 S&A Smart Solution. Toate
+            drepturile rezervate.</p>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/lang.js"></script>
+    <script src="../js/hamburger.js"></script>
+    <script src="../js/reveal.js"></script>
+</body>
+
+</html>
