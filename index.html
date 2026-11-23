@@ -5,10 +5,783 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S&A Smart Solution | Web & AI Agency</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #112444;
+            --text: #ffffff;
+            --text-muted: #8da4c4;
+            --card: #1a3157;
+            --border: #293853;
+            --nav-bg: rgba(17, 36, 68, 0.95);
+            --primary: #406fe5;
+            --secondary: #293853;
+            --shadow: rgba(0, 0, 0, 0.2);
+            --nav-height: 64px;
+        }
+
+        body.light-mode {
+            --bg: #f4f7fc;
+            --text: #112444;
+            --text-muted: #5a718f;
+            --card: #ffffff;
+            --border: #e1e8f0;
+            --nav-bg: #ffffff;
+            --primary: #406fe5;
+            --secondary: #293853;
+            --shadow: rgba(17, 36, 68, 0.08);
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        a,
+        button,
+        label,
+        .lang-btn {
+            cursor: pointer;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.05em;
+            white-space: nowrap;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lang-btn {
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .lang-btn.active {
+            color: var(--text);
+        }
+
+        .lang-sep {
+            color: var(--text-muted);
+            opacity: 0.4;
+            font-weight: 300;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            transition: 0.4s;
+        }
+
+        body.light-mode .slider {
+            background-color: #e1e8f0;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            transition: 0.4s;
+            z-index: 2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .slider:before {
+            background-color: #112444;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(28px);
+        }
+
+        .icon {
+            font-size: 11px;
+            user-select: none;
+            z-index: 1;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 6px;
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--text);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: calc(var(--nav-height) + 40px);
+            box-sizing: border-box;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            width: fit-content;
+            color: #ffd700;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .work-section {
+            padding: 6rem 5% 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .services-section {
+            padding: 4rem 5% 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        a.project-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        a.project-card:hover .project-link {
+            transform: translateX(4px);
+        }
+
+        .service-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .service-card .desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .service-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            color: var(--text);
+        }
+
+        .service-card .price span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .disclaimer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+
+        .about-section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .about-content {
+            max-width: 900px;
+        }
+
+        .about-content p {
+            font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .terms-section {
+            padding: 0 5% 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .terms-box {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px var(--shadow);
+        }
+
+        .terms-box h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .terms-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .terms-box li {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .terms-box li:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms-box li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .terms-box strong {
+            color: var(--text);
+        }
+
+        .contact-section {
+            padding: 8rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .contact-section h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .contact-sub {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(64, 111, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: #ffffff;
+        }
+
+        body.light-mode .btn-secondary {
+            color: #ffffff;
+        }
+
+        .email-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .email-text a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 2px;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+
+        .email-text a:hover {
+            color: var(--primary);
+        }
+
+        footer {
+            padding: 2.5rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .grid .service-card:nth-child(1),
+        .grid .project-card:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .grid .service-card:nth-child(2),
+        .grid .project-card:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .grid .service-card:nth-child(3),
+        .grid .project-card:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
+        .grid .service-card:nth-child(4),
+        .grid .project-card:nth-child(4) {
+            transition-delay: 0.2s;
+        }
+
+        .grid .service-card:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .grid .service-card:nth-child(6) {
+            transition-delay: 0.3s;
+        }
+
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-controls {
+                gap: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 0.5rem 5% 1rem 5%;
+                background-color: var(--nav-bg);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--border);
+                box-sizing: border-box;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .nav-links a {
+                padding: 1.1rem 0;
+                font-size: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links a:last-of-type {
+                border-bottom: none;
+            }
+
+            .nav-links .lang-switch {
+                padding: 1.1rem 0 0.5rem 0;
+                font-size: 0.9rem;
+                justify-content: flex-start;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: calc(var(--nav-height) + 60px);
+                padding-bottom: 4rem;
+            }
+
+            .discount-badge {
+                font-size: 0.8rem;
+                padding: 7px 14px;
+            }
+
+            .hero-title {
+                margin-bottom: 1.2rem;
+            }
+
+            .work-section {
+                padding-top: 3rem;
+            }
+
+            .services-section {
+                padding-top: 2rem;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.8rem;
+            }
+
+            .about-section {
+                padding: 4rem 5%;
+            }
+
+            .terms-section {
+                padding-bottom: 4rem;
+            }
+
+            .terms-box {
+                padding: 1.8rem;
+            }
+
+            .contact-section {
+                padding: 5rem 5%;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+                padding: 1.1rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .logo {
+                font-size: 0.95rem;
+            }
+
+            .nav-controls {
+                gap: 0.6rem;
+            }
+
+            .theme-switch {
+                width: 48px;
+                height: 24px;
+            }
+
+            .theme-switch .slider:before {
+                height: 16px;
+                width: 16px;
+                bottom: 4px;
+                left: 4px;
+            }
+
+            input:checked+.slider:before {
+                transform: translateX(24px);
+            }
+
+            .icon {
+                font-size: 10px;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .project-content,
+            .service-card {
+                padding: 1.4rem;
+            }
+
+            .terms-box {
+                padding: 1.4rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -57,40 +830,58 @@
     <section id="work" class="work-section">
         <h2 class="section-title reveal" data-en="Selected Work" data-ro="Proiecte Selectate">Proiecte Selectate</h2>
         <div class="grid">
-            <div class="project-card reveal">
+            <!-- Proiect 1: Global Civic Construct -->
+            <a href="https://oldserj.github.io/Site-Prezentare-GLOBAL-CIVIC-CONSTRUCT/" target="_blank"
+                rel="noopener noreferrer" class="project-card reveal">
                 <div class="project-image" style="background: linear-gradient(45deg, #1d2b64, #f8cdda);"></div>
                 <div class="project-content">
-                    <span class="project-tag" data-en="Local Services" data-ro="Servicii Locale">Servicii Locale</span>
-                    <h3 data-en="Cleaning Company Platform" data-ro="Platformă Companie Curățenie">Platformă Companie
-                        Curățenie</h3>
-                    <p data-en="Designed a high-converting local platform. Focused on mobile-first UX and local SEO to drive direct bookings."
-                        data-ro="Am creat o platformă locală optimizată pentru conversii. Focus pe UX mobil și SEO local pentru a genera programări directe.">
-                        Am creat o platformă locală optimizată pentru conversii. Focus pe UX mobil și SEO local pentru a
-                        genera programări directe.</p>
+                    <span class="project-tag" data-en="Construction & Civil Engineering"
+                        data-ro="Construcții & Inginerie">Construcții & Inginerie</span>
+                    <h3 data-en="Global Civic Construct" data-ro="Global Civic Construct">Global Civic Construct</h3>
+                    <p data-en="Corporate presentation website for a construction company. Focused on clear service presentation, trust, and direct client inquiries."
+                        data-ro="Site de prezentare corporate pentru o companie de construcții. Focus pe prezentarea clară a serviciilor, încredere și solicitări directe.">
+                        Site de prezentare corporate pentru o companie de construcții. Focus pe prezentarea clară a
+                        serviciilor, încredere și solicitări directe.</p>
+                    <span class="project-link" data-en="View Live Site ↗" data-ro="Vezi Site-ul Live ↗">Vezi Site-ul
+                        Live ↗</span>
                 </div>
-            </div>
-            <div class="project-card reveal">
+            </a>
+
+            <!-- Proiect 2: Bella's Sweets & Flowers -->
+            <a href="https://oldserj.github.io/Site-Prezentare-BELLAS-SWEETS-FLOWERS/" target="_blank"
+                rel="noopener noreferrer" class="project-card reveal">
                 <div class="project-image" style="background: linear-gradient(45deg, #134e5e, #71b280);"></div>
                 <div class="project-content">
-                    <span class="project-tag" data-en="E-Commerce" data-ro="E-Commerce">E-Commerce</span>
-                    <h3 data-en="Premium Florist Store" data-ro="Magazin Online Florărie">Magazin Online Florărie</h3>
-                    <p data-en="Built a fast, visually engaging e-commerce experience. Booking sevice and analysis of available stock analysis."
-                        data-ro="Am dezvoltat un magazin online rapid și vizual. Serviciu de rezervare și integrare de analiză a stocului disponibil.">
-                        Am dezvoltat un magazin online rapid și vizual. Serviciu de rezervare și integrare de analiză a stocului disponibil.</p>
+                    <span class="project-tag" data-en="Events & Floral Design"
+                        data-ro="Evenimente & Florărie">Evenimente & Florărie</span>
+                    <h3 data-en="Bella's Sweets & Flowers" data-ro="Bella's Sweets & Flowers">Bella's Sweets & Flowers
+                    </h3>
+                    <p data-en="Visually engaging presentation platform for bespoke floral arrangements and artisan sweets, optimized for mobile browsing and quick orders."
+                        data-ro="Platformă vizuală de prezentare pentru aranjamente florale și dulciuri artizanale, optimizată pentru mobil și comenzi rapide.">
+                        Platformă vizuală de prezentare pentru aranjamente florale și dulciuri artizanale, optimizată
+                        pentru mobil și comenzi rapide.</p>
+                    <span class="project-link" data-en="View Live Site ↗" data-ro="Vezi Site-ul Live ↗">Vezi Site-ul
+                        Live ↗</span>
                 </div>
-            </div>
-            <div class="project-card reveal">
+            </a>
+
+            <!-- Proiect 3: Cabinet Stomatologic 32 -->
+            <a href="https://oldserj.github.io/Site-Prezentare-CABINET-STOMATOLOGIC-32/" target="_blank"
+                rel="noopener noreferrer" class="project-card reveal">
                 <div class="project-image" style="background: linear-gradient(45deg, #3a1c71, #d76d77);"></div>
                 <div class="project-content">
                     <span class="project-tag" data-en="Medical" data-ro="Medical">Medical</span>
-                    <h3 data-en="Dental Clinic Web App" data-ro="Aplicație Web Clinică Dentară">Aplicație Web Clinică
-                        Dentară</h3>
-                    <p data-en="Developed a clean, trust-building site. Custom booking integration and highly optimized load times for patient retention."
-                        data-ro="Am creat un site clean care inspiră încredere. Integrare programări personalizată și timpi de încărcare optimizați.">
-                        Am creat un site clean care inspiră încredere. Integrare programări personalizată și timpi de
-                        încărcare optimizați.</p>
+                    <h3 data-en="Cabinet Stomatologic 32" data-ro="Cabinet Stomatologic 32">Cabinet Stomatologic 32</h3>
+                    <p data-en="Clean, trust-building dental clinic website featuring clear treatment pricing, team presentation, and streamlined appointment booking."
+                        data-ro="Site medical curat care inspiră încredere, cu listă transparentă de tratamente, prezentarea echipei și sistem rapid de programări.">
+                        Site medical curat care inspiră încredere, cu listă transparentă de tratamente, prezentarea
+                        echipei și sistem rapid de programări.</p>
+                    <span class="project-link" data-en="View Live Site ↗" data-ro="Vezi Site-ul Live ↗">Vezi Site-ul
+                        Live ↗</span>
                 </div>
-            </div>
+            </a>
+
+            <!-- Proiect 4: Păstrat -->
             <div class="project-card reveal">
                 <div class="project-image" style="background: linear-gradient(45deg, #2c3e50, #4ca1af);"></div>
                 <div class="project-content">
@@ -99,7 +890,8 @@
                         Service Auto</h3>
                     <p data-en="Coded a high-performance custom web app. Implemented transparent service catalogs and a seamless scheduling system."
                         data-ro="Am programat o aplicație web custom de înaltă performanță. Catalog transparent de servicii și sistem de programare ușor de înțeles.">
-                        Am programat o aplicație web custom de înaltă performanță. Catalog transparent de servicii și sistem de programare ușor de înțeles.</p>
+                        Am programat o aplicație web custom de înaltă performanță. Catalog transparent de servicii și
+                        sistem de programare ușor de înțeles.</p>
                 </div>
             </div>
         </div>
@@ -185,7 +977,8 @@
             <p data-en="S&A Smart Solution is a young web development agency made up of four people: two developers specialized in Computer Science Artificial Intelligence, a project coordinator, and a marketing and sales specialist. Every project is supported by the entire team, not just one person. We are building our portfolio, so our prices are flexible and accessible."
                 data-ro="S&A Smart Solution este o agenție tânără de dezvoltare web, formată din patru oameni: doi dezvoltatori specializați în Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană. Ne construim portofoliul, așa că prețurile noastre sunt flexibile și accesibile.">
                 S&A Smart Solution este o agenție tânără de dezvoltare web, formată din patru oameni: doi dezvoltatori
-                specializați în Informatică Inteligență Artificială, o coordonatoare de proiect și un specialist în marketing și
+                specializați în Informatică Inteligență Artificială, o coordonatoare de proiect și un specialist în
+                marketing și
                 vânzări. Fiecare proiect este susținut de întreaga echipă, nu de o singură persoană. Ne construim
                 portofoliul, așa că prețurile noastre sunt flexibile și accesibile.</p>
         </div>
@@ -197,14 +990,17 @@
             <ul>
                 <li data-en="<strong>Special offer:</strong> Up to 20% discount for early clients."
                     data-ro="<strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.">
-                    <strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.</li>
+                    <strong>Ofertă specială:</strong> Reducere de până la 20% pentru primii clienți.
+                </li>
                 <li data-en="<strong>Payment:</strong> 30–50% advance at the start of the project, the rest upon delivery."
                     data-ro="<strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.">
-                    <strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.</li>
+                    <strong>Plată:</strong> Avans de 30–50% la începutul proiectului, restul la livrare.
+                </li>
                 <li data-en="<strong>Custom offer:</strong> Send us your project details and we will get back to you with a final price."
                     data-ro="<strong>Ofertă personalizată:</strong> Trimiteți-ne detaliile proiectului și revenim cu un preț final.">
                     <strong>Ofertă personalizată:</strong> Trimiteți-ne detaliile proiectului și revenim cu un preț
-                    final.</li>
+                    final.
+                </li>
             </ul>
         </div>
     </section>
@@ -234,7 +1030,85 @@
             drepturile rezervate.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        const themeCheckbox = document.getElementById('checkbox');
+        const savedTheme = localStorage.getItem('theme');
+
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeCheckbox.checked = true;
+        }
+
+        themeCheckbox.addEventListener('change', () => {
+            if (themeCheckbox.checked) {
+                document.body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const translatableElements = document.querySelectorAll('[data-en]');
+
+        function setLanguage(lang) {
+            translatableElements.forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+
+            document.documentElement.lang = lang;
+            localStorage.setItem('lang', lang);
+
+            langBtns.forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        const savedLang = localStorage.getItem('lang') || 'ro';
+        setLanguage(savedLang);
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
