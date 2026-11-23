@@ -72,8 +72,6 @@ label,
     cursor: pointer;
 }
 
-/* Navbar */
-
 .navbar {
     position: fixed;
     top: 0;
@@ -113,7 +111,7 @@ label,
     gap: 1.6rem;
 }
 
-.nav-links>a,
+.nav-links > a,
 .dropdown-toggle {
     font-family: inherit;
     font-size: 0.92rem;
@@ -126,12 +124,10 @@ label,
     transition: color 0.25s ease;
 }
 
-.nav-links>a:hover,
+.nav-links > a:hover,
 .dropdown-toggle:hover {
     color: var(--text);
 }
-
-/* Desktop & Mobile Dropdown */
 
 .nav-dropdown {
     position: relative;
@@ -147,11 +143,7 @@ label,
 }
 
 @media (min-width: 901px) {
-
-    .nav-dropdown:hover .dropdown-menu,
-    .nav-dropdown:focus-within .dropdown-menu {
-        display: flex;
-        flex-direction: column;
+    .dropdown-menu.open {
         position: absolute;
         top: calc(100% + 0.5rem);
         left: 0;
@@ -164,7 +156,7 @@ label,
         z-index: 1100;
     }
 
-    .dropdown-menu a {
+    .dropdown-menu.open a {
         padding: 0.65rem 0.9rem;
         border-radius: 8px;
         font-size: 0.9rem;
@@ -174,13 +166,11 @@ label,
         transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    .dropdown-menu a:hover {
+    .dropdown-menu.open a:hover {
         background-color: rgba(64, 111, 229, 0.14);
         color: var(--text);
     }
 }
-
-/* Language Switch */
 
 .lang-switch {
     display: flex;
@@ -206,8 +196,6 @@ label,
     color: var(--text-muted);
     opacity: 0.4;
 }
-
-/* Theme Toggle */
 
 .theme-switch {
     position: relative;
@@ -253,7 +241,7 @@ body.light-mode .slider::before {
     background-color: #112444;
 }
 
-input:checked+.slider::before {
+input:checked + .slider::before {
     transform: translateX(28px);
 }
 
@@ -263,8 +251,6 @@ input:checked+.slider::before {
     user-select: none;
     z-index: 1;
 }
-
-/* Hamburger Button */
 
 .hamburger {
     display: none;
@@ -306,8 +292,6 @@ input:checked+.slider::before {
 .hamburger.active span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
-
-/* Hero & Page Headers */
 
 .hero,
 .page-header,
@@ -373,8 +357,6 @@ input:checked+.slider::before {
     line-height: 1.7;
 }
 
-/* Sections & Grids */
-
 .products-section,
 .work-section,
 .workflow-section {
@@ -396,8 +378,6 @@ input:checked+.slider::before {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 1.5rem;
 }
-
-/* Product Cards (Homepage) */
 
 .product-card {
     background-color: var(--bg-elevated);
@@ -449,8 +429,6 @@ input:checked+.slider::before {
     transform: translateX(4px);
 }
 
-/* Project Cards (Subpages) */
-
 .project-card {
     background-color: var(--bg-elevated);
     border: 1px solid var(--border);
@@ -473,11 +451,23 @@ input:checked+.slider::before {
 .project-image {
     width: 100%;
     height: 195px;
-    transition: opacity 0.3s ease;
+    overflow: hidden;
+    background-color: #0b172c;
+    border-bottom: 1px solid var(--border);
 }
 
-.project-card:hover .project-image {
-    opacity: 0.88;
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.04);
+    opacity: 0.92;
 }
 
 .project-content {
@@ -519,8 +509,6 @@ input:checked+.slider::before {
 .project-card:hover .project-link {
     transform: translateX(4px);
 }
-
-/* Workflow Cards */
 
 .workflow-card {
     background-color: var(--bg-elevated);
@@ -575,8 +563,6 @@ input:checked+.slider::before {
 .workflow-steps strong {
     color: var(--text);
 }
-
-/* About & Terms */
 
 .about-section {
     padding-top: 5.5rem;
@@ -638,8 +624,6 @@ input:checked+.slider::before {
 .terms-box strong {
     color: var(--text);
 }
-
-/* Contact & Footer */
 
 .contact-section {
     padding-top: 6rem;
@@ -726,8 +710,6 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-/* Scroll Reveal */
-
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -738,8 +720,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Mobile Layout */
 
 @media (max-width: 900px) {
     .hamburger {
@@ -781,7 +761,7 @@ footer {
         transform: translateY(0);
     }
 
-    .nav-links>a,
+    .nav-links > a,
     .nav-links .dropdown-toggle {
         display: flex;
         align-items: center;
@@ -795,7 +775,7 @@ footer {
         border-bottom: 1px solid var(--border);
     }
 
-    .dropdown-menu {
+    .dropdown-menu.open {
         margin: 0.5rem 0 0.75rem 0;
         padding: 0.25rem 1rem;
         border-radius: 12px;
@@ -803,7 +783,7 @@ footer {
         border: 1px solid var(--border);
     }
 
-    .dropdown-menu a {
+    .dropdown-menu.open a {
         display: flex;
         align-items: center;
         min-height: 46px;
@@ -815,7 +795,7 @@ footer {
         border-bottom: 1px solid var(--border);
     }
 
-    .dropdown-menu a:last-child {
+    .dropdown-menu.open a:last-child {
         border-bottom: none;
     }
 
@@ -899,7 +879,7 @@ footer {
         height: 16px;
     }
 
-    input:checked+.slider::before {
+    input:checked + .slider::before {
         transform: translateX(24px);
     }
 
