@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (dropdownToggle && dropdownMenu) {
         dropdownToggle.addEventListener('click', (event) => {
+            event.preventDefault();
             event.stopPropagation();
             const isDropdownOpen = dropdownMenu.classList.contains('open');
             setDropdown(!isDropdownOpen);
